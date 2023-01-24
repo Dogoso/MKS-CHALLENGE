@@ -41,6 +41,15 @@ const MenuFooter = styled.button`
   cursor: pointer;
 `;
 
+const Total = styled.div`
+  padding: 0px 30px;
+  font-weight: bold;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+`;
+
 interface ICartSideMenu {
   closeFunc: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -57,6 +66,9 @@ function CartSideMenu({ closeFunc }: ICartSideMenu) {
       <MenuBody>
         <CartMenuItem imagem="nenhuma" nome="Ipad boladao" valor={100} quantidade={0} />
       </MenuBody>
+      <Total>
+        <div>Total:</div> <div>R$???</div>
+      </Total>
       <MenuFooter>
         Finalizar Compra
       </MenuFooter>
