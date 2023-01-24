@@ -1,3 +1,4 @@
+import { useAppSelector } from "Hooks/hooks";
 import { useState } from "react";
 import styled from "styled-components";
 import CartSideMenu from "./Components/CartSideMenu/cart_side_menu";
@@ -21,12 +22,13 @@ const NumberItens = styled.span`
 function Cart() {
 
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const cart = useAppSelector(state => state.cart);
 
   return <>
     <OpenButton onClick={() => setIsCartOpen(true)}>
       <CartSvg />
       <NumberItens>
-        0
+        {cart.length}
       </NumberItens>
     </OpenButton>
     {isCartOpen && <CartSideMenu closeFunc={setIsCartOpen} />}

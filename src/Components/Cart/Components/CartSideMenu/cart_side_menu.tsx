@@ -1,3 +1,4 @@
+import { useAppSelector } from "Hooks/hooks";
 import styled from "styled-components";
 import CloseButton from "../CloseButton/close_button";
 import CartMenuItem from "./Components/CartMenuItem/cart_menu_item";
@@ -54,6 +55,11 @@ interface ICartSideMenu {
   closeFunc: React.Dispatch<React.SetStateAction<boolean>>
 }
 function CartSideMenu({ closeFunc }: ICartSideMenu) {
+
+  const allProducts = useAppSelector(state => state.cart);
+  const products = useAppSelector(state => Array.from(new Set(state.cart)));
+  const totalPrice = allProducts.reduce((prev, cur) => Number(prev) + Number(cur.price), 0);
+
   return (
     <Menu>
       <MenuHeader>
@@ -64,10 +70,10 @@ function CartSideMenu({ closeFunc }: ICartSideMenu) {
         <CloseButton onClick={() => closeFunc(false)} />
       </MenuHeader>
       <MenuBody>
-        <CartMenuItem imagem="nenhuma" nome="Ipad boladao" valor={100} quantidade={0} />
+        {products.map(product => <CartMenuItem product={product} />)}
       </MenuBody>
       <Total>
-        <div>Total:</div> <div>R$???</div>
+        <div>Total:</div> <div>R${totalPrice}</div>
       </Total>
       <MenuFooter>
         Finalizar Compra

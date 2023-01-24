@@ -1,6 +1,7 @@
 import CloseButton from "Components/Cart/Components/CloseButton/close_button";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "Hooks/hooks";
+import { Product } from "Models/product";
+import { removeAllOfProductCart } from "Store/Modules/Cart/reducers";
 import styled from "styled-components";
 import QtdInput from "./Components/QtdInput/qtd_input";
 
@@ -12,6 +13,7 @@ const Item = styled.div`
   justify-content: space-between;
   height: 100px;
   padding: 0px 20px;
+  margin-bottom: 20px;
 `;
 
 const ItemName = styled.span`
@@ -30,27 +32,37 @@ const CloseWrapper = styled.div`
   right: -375px;
 `;
 
-interface ICartMenuItem {
-  nome: string,
-  valor: number,
-  imagem: string,
-  quantidade: number
-}
-function CartMenuItem({ imagem, nome, valor }: ICartMenuItem) {
+const Image = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+`;
 
-  const [quantidade, setQuantidade] = useState<number>(1);
+interface ICartMenuItem {
+  product: Product
+}
+function CartMenuItem({ product }: ICartMenuItem) {
+
+  const curAmount = useAppSelector(state => state.cart.filter(cartProduct => cartProduct.id === product.id));
+  const dispatch = useAppDispatch();
+  const quantidade = curAmount.length;
+
+  function removeAllProducts() {
+    dispatch(removeAllOfProductCart(product));
+  }
 
   return (
     <Item>
       <CloseWrapper>
-        <CloseButton onClick={() => setQuantidade(0)} />
+        <CloseButton onClick={removeAllProducts} />
       </CloseWrapper>
-      <img src={imagem} alt={nome} />
+      <Image src={product.photo} alt={product.name} />
       <ItemName>
-        {nome}
+        {product.name}
       </ItemName>
-      <QtdInput value={quantidade} onChange={setQuantidade} />
-      <Value>R${valor}</Value>
+      <QtdInput product={product} amount={quantidade} />
+      <Value>R${product.price}</Value>
     </Item>
   )
 }

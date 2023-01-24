@@ -1,3 +1,6 @@
+import { useAppDispatch } from "Hooks/hooks";
+import { Product } from "Models/product";
+import { addProductCart, removeOneProductCart } from "Store/Modules/Cart/reducers";
 import styled from "styled-components";
 
 const Input = styled.div`
@@ -41,17 +44,28 @@ const Controllers = styled.div`
 `;
 
 interface IQtdInput {
-  value: number,
-  onChange: React.Dispatch<React.SetStateAction<number>>
+  product: Product,
+  amount: number
 }
-function QtdInput({ value, onChange }: IQtdInput) {
+function QtdInput({ product, amount }: IQtdInput) {
+
+  const dispatch = useAppDispatch();
+
+  function removeProduct() {
+    dispatch(removeOneProductCart(product));
+  }
+
+  function addProduct() {
+    dispatch(addProductCart(product));
+  }
+
   return (
     <Input>
       <InputTitle>Qtd:</InputTitle>
       <Controllers>
-        <QtdButtonLeft onClick={() => value > 1 ? onChange(value-1) : undefined}>-</QtdButtonLeft>
-        <ValueWrapper>{value}</ValueWrapper>
-        <QtdButtonRight onClick={() => onChange(value+1)}>+</QtdButtonRight>
+        <QtdButtonLeft onClick={removeProduct}>-</QtdButtonLeft>
+        <ValueWrapper>{amount}</ValueWrapper>
+        <QtdButtonRight onClick={addProduct}>+</QtdButtonRight>
       </Controllers>
     </Input>
   )

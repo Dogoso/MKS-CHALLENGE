@@ -1,14 +1,22 @@
+import { useAppDispatch } from "Hooks/hooks";
+import { Product } from "Models/product";
+import { addProductCart } from "Store/Modules/Cart/reducers";
 import styled from "styled-components";
 import { ReactComponent as ShoppingSvg } from "./src/shopping-bag.svg";
 
 const Item = styled.div`
   box-shadow: 0px 0px 10px #00000050;
   width: 250px;
-  height: 300px;
+  min-width: 250px;
+  max-width: 250px;
+  height: 400px;
+  min-height: 400px;
+  max-height: 400px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 20px;
 `;
 
 const ShoppingButton = styled.button`
@@ -29,10 +37,11 @@ const Description = styled.div`
   font-size: 12px;
 `;
 
-const Image = styled.div`
-  height: 130px;
+const Image = styled.img`
+  height: 200px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+  object-fit: cover;
 `;
 
 const Price = styled.div`
@@ -56,24 +65,26 @@ const MainInfo = styled.div`
 `;
 
 interface IStoreItem {
-  imagem: string,
-  titulo: string,
-  preco: number,
-  descricao: string
+  product: Product
 }
-function StoreItem({ imagem, titulo, preco, descricao }: IStoreItem) {
+function StoreItem({ product }: IStoreItem) {
+
+  const dispatch = useAppDispatch();
+
+  function addInCart() {
+    dispatch(addProductCart(product));
+  }
+
   return (
     <Item>
-      <Image>
-        <img src={imagem} alt={titulo} />
-      </Image>
+      <Image src={product.photo} alt={product.name} />
       <MainInfo>
-        <Title>{titulo}</Title> <Price>R${preco}</Price>
+        <Title>{product.name}</Title> <Price>R${product.price}</Price>
       </MainInfo>
       <Description>
-        {descricao}
+        {product.description}
       </Description>
-      <ShoppingButton>
+      <ShoppingButton onClick={addInCart}>
         <ShoppingSvg /> Comprar
       </ShoppingButton>
     </Item>
