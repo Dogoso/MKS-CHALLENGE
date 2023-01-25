@@ -10,6 +10,10 @@ const cartSlice = createSlice({
         addProductCart: (state, { payload }) => {
             state.push(payload);
         },
+        resetCart: (state) => {
+            state = [];
+            return state;
+        },
         removeOneProductCart: (state, { payload }) => {
             let removed = false;
             state = state.filter(product => {
@@ -30,5 +34,5 @@ const cartSlice = createSlice({
     }
 });
 
-export const { addProductCart, removeOneProductCart, removeAllOfProductCart } = cartSlice.actions;
+export const { addProductCart, resetCart, removeOneProductCart, removeAllOfProductCart } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

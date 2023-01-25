@@ -1,4 +1,6 @@
 import { useAppSelector } from "Hooks/hooks";
+import { useDispatch } from "react-redux";
+import { resetCart } from "Store/Modules/Cart/reducers";
 import styled from "styled-components";
 import CloseButton from "../CloseButton/close_button";
 import CartMenuItem from "./Components/CartMenuItem/cart_menu_item";
@@ -29,7 +31,11 @@ const HeaderTitle = styled.h1`
 `;
 
 const MenuBody = styled.div`
-  padding: 40px;
+  padding: 20px;
+  min-height: 290px;
+  max-height: 290px;
+  height: 290px;
+  overflow-y: scroll;
 `;
 
 const MenuFooter = styled.button`
@@ -59,6 +65,12 @@ function CartSideMenu({ closeFunc }: ICartSideMenu) {
   const allProducts = useAppSelector(state => state.cart);
   const products = useAppSelector(state => Array.from(new Set(state.cart)));
   const totalPrice = allProducts.reduce((prev, cur) => Number(prev) + Number(cur.price), 0);
+  const dispatch = useDispatch();
+
+  function confirmBuy() {
+    alert("Compra efetuada!");
+    dispatch(resetCart());
+  }
 
   return (
     <Menu>
@@ -75,7 +87,7 @@ function CartSideMenu({ closeFunc }: ICartSideMenu) {
       <Total>
         <div>Total:</div> <div>R${totalPrice}</div>
       </Total>
-      <MenuFooter>
+      <MenuFooter onClick={confirmBuy}>
         Finalizar Compra
       </MenuFooter>
     </Menu>
