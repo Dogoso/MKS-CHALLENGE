@@ -6,8 +6,14 @@ import StoreItem from "./Components/StoreItem/store_item";
 
 const Store = styled.section`
   min-height: calc(100vh - 20px - 100px);
-  display: inline-flex;
+  display: flex;
   justify-content: center;
+`;
+
+const Products = styled.div`
+  width: 1200px;
+  max-width: 1200px;
+  display: inline;
 `;
 
 function Home() {
@@ -21,7 +27,9 @@ function Home() {
 
   return (
     <Store>
-      {products.map(product => <StoreItem product={product} />)}
+      <Products>
+        {products.map((product, index) => <StoreItem product={product} />)}
+      </Products>
     </Store>
   )
 }

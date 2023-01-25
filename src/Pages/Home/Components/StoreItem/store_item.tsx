@@ -13,7 +13,7 @@ const Item = styled.div`
   min-height: 400px;
   max-height: 400px;
   border-radius: 20px;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 20px;
