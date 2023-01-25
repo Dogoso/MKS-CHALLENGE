@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from "Hooks/hooks";
 import { useEffect } from "react";
 import { getProductsThunk } from "Store/Modules/Products/thunk";
 import styled from "styled-components";
+import ShimmerSkeleton from "./Components/ShimmerSkeleton/shimmer_skeleton";
 import StoreItem from "./Components/StoreItem/store_item";
 
 const Store = styled.section`
@@ -14,12 +15,13 @@ const Products = styled.div`
   width: 1200px;
   max-width: 1200px;
   display: inline;
+  padding: 50px 0px;
 `;
 
 function Home() {
 
   const dispatch = useAppDispatch();
-  const products = useAppSelector(state => state.products);
+  const products: Array<any> = []//useAppSelector(state => state.products);
 
   useEffect(() => {
     getProductsThunk(dispatch, 1);
@@ -27,9 +29,9 @@ function Home() {
 
   return (
     <Store>
-      <Products>
-        {products.map((product, index) => <StoreItem product={product} />)}
-      </Products>
+      {products.length !== 0 ? <Products>
+        {products.map(product => <StoreItem product={product} />)}
+      </Products> : <ShimmerSkeleton />}
     </Store>
   )
 }
