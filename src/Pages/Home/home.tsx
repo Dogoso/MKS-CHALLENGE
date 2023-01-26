@@ -18,6 +18,12 @@ const Products = styled.div`
   padding: 50px 0px;
 `;
 
+const Shimmer = styled.div`
+  min-height: calc(100vh - 20px - 100px);
+  display: flex;
+  justify-content: center;
+`;
+
 function Home() {
 
   const dispatch = useAppDispatch();
@@ -31,9 +37,9 @@ function Home() {
     <Store>
       {products.length !== 0 ? <Products data-testid="products">
         {products.map(product => <StoreItem key={product.id} product={product} />)}
-      </Products> : <div data-testid="shimmer">
+      </Products> : <Shimmer data-testid="shimmer">
         <ShimmerSkeleton />
-      </div>}
+      </Shimmer>}
     </Store>
   )
 }
