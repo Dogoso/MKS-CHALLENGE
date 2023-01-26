@@ -21,7 +21,7 @@ const Products = styled.div`
 function Home() {
 
   const dispatch = useAppDispatch();
-  const products: Array<any> = []//useAppSelector(state => state.products);
+  const products = useAppSelector(state => state.products);
 
   useEffect(() => {
     getProductsThunk(dispatch, 1);
@@ -29,9 +29,11 @@ function Home() {
 
   return (
     <Store>
-      {products.length !== 0 ? <Products>
-        {products.map(product => <StoreItem product={product} />)}
-      </Products> : <ShimmerSkeleton />}
+      {products.length !== 0 ? <Products data-testid="products">
+        {products.map(product => <StoreItem key={product.id} product={product} />)}
+      </Products> : <div data-testid="shimmer">
+        <ShimmerSkeleton />
+      </div>}
     </Store>
   )
 }
