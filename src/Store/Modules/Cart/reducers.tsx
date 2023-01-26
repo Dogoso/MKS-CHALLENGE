@@ -18,13 +18,14 @@ const cartSlice = createSlice({
             let removed = false;
             state = state.filter(product => {
                 if(!removed) {
-                    removed = true;
                     if(product.id === payload.id) {
+                        removed = true;
                         return false;
                     }
                 }
                 return true;
             });
+            console.log(state);
             return state;
         },
         removeAllOfProductCart: (state, { payload }) => {
