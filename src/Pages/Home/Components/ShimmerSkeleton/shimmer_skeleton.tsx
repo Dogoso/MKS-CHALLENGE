@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakSm } from "Styles/_breakpoints";
 import ShimmerItem from "./ShimmerItem/shimmer_item";
 
 const ShimmerStore = styled.div`
@@ -6,6 +7,11 @@ const ShimmerStore = styled.div`
   max-width: 1200px;
   display: inline;
   padding: 50px 0px;
+  @media only screen and (max-width: ${breakSm}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 function ShimmerSkeleton() {
