@@ -17,6 +17,9 @@ const Menu = styled.section`
   flex-direction: column;
   justify-content: space-between;
   cursor: default;
+  @media only screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const MenuHeader = styled.div`
