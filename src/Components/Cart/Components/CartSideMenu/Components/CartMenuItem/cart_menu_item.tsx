@@ -14,16 +14,33 @@ const Item = styled.div`
   height: 100px;
   padding: 0px 20px;
   margin-bottom: 20px;
+  @media only screen and (max-width: 500px) {
+    height: 350px;
+    max-height: 400px;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const ItemName = styled.span`
   color: black;
   margin-right: 20px;
+  @media only screen and (max-width: 500px) {
+    font-size: 24px;
+  }
 `;
 
 const Value = styled.span`
   color: black;
   font-weight: bold;
+  @media only screen and (max-width: 500px) {
+    color: white;
+    background-color: #373737;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const CloseWrapper = styled.div`
@@ -32,11 +49,22 @@ const CloseWrapper = styled.div`
   right: -375px;
 `;
 
+const Wrapper = styled.div`
+  @media only screen and (max-width: 500px) {
+    display: flex;
+    align-items: center;
+  }
+`;
+
 const Image = styled.img`
   width: 100px;
   height: 100px;
   object-fit: cover;
   margin-right: 10px;
+  @media only screen and (max-width: 500px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 interface ICartMenuItem {
@@ -61,8 +89,10 @@ function CartMenuItem({ product }: ICartMenuItem) {
       <ItemName>
         {product.name}
       </ItemName>
-      <QtdInput product={product} amount={quantidade} />
-      <Value>R${product.price}</Value>
+      <Wrapper>
+        <QtdInput product={product} amount={quantidade} />
+        <Value>R${product.price}</Value>
+      </Wrapper>
     </Item>
   )
 }

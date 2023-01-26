@@ -11,6 +11,9 @@ const Input = styled.div`
 const InputTitle = styled.small`
   color: black;
   font-size: 10px;
+  @media only screen and (max-width: 500px) {
+    font-size: 14px;
+  }
 `;
 
 const ValueWrapper = styled.span`
@@ -19,6 +22,9 @@ const ValueWrapper = styled.span`
   border-bottom: 1px solid #00000020;
   font-size: 14px;
   padding: 0px 5px;
+  @media only screen and (max-width: 500px) {
+    padding: 3px;
+  }
 `;
 
 const QtdButtonLeft = styled.button`
@@ -27,6 +33,9 @@ const QtdButtonLeft = styled.button`
   cursor: pointer;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
+  @media only screen and (max-width: 500px) {
+    transform: scale(1.3);
+  }
 `;
 
 const QtdButtonRight = styled.button`
@@ -35,12 +44,20 @@ const QtdButtonRight = styled.button`
   cursor: pointer;
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
+  @media only screen and (max-width: 500px) {
+    transform: scale(1.3);
+  }
 `;
 
 const Controllers = styled.div`
   width: 80px;
   min-width: 80px;
   max-width: 80px;
+  @media only screen and (max-width: 500px) {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+  }
 `;
 
 interface IQtdInput {

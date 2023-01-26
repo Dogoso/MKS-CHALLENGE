@@ -16,6 +16,11 @@ const Products = styled.div`
   max-width: 1200px;
   display: inline;
   padding: 50px 0px;
+  @media only screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Shimmer = styled.div`

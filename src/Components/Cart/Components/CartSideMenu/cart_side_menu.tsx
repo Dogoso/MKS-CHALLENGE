@@ -39,6 +39,7 @@ const MenuBody = styled.div`
   max-height: 290px;
   height: 290px;
   overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 const MenuFooter = styled.button`
