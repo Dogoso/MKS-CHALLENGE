@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from "Hooks/hooks";
 import { useEffect } from "react";
 import { getProductsThunk } from "Store/Modules/Products/thunk";
 import styled from "styled-components";
+import { breakSm } from "Styles/_breakpoints";
 import ShimmerSkeleton from "./Components/ShimmerSkeleton/shimmer_skeleton";
 import StoreItem from "./Components/StoreItem/store_item";
 
@@ -16,7 +17,7 @@ const Products = styled.div`
   max-width: 1200px;
   display: inline;
   padding: 50px 0px;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: ${breakSm}) {
     display: flex;
     flex-direction: column;
     align-items: center;

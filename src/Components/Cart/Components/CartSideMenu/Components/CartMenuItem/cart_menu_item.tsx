@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "Hooks/hooks";
 import { Product } from "Models/product";
 import { removeAllOfProductCart } from "Store/Modules/Cart/reducers";
 import styled from "styled-components";
+import { breakSm } from "Styles/_breakpoints";
 import QtdInput from "./Components/QtdInput/qtd_input";
 
 const Item = styled.div`
@@ -14,7 +15,7 @@ const Item = styled.div`
   height: 100px;
   padding: 0px 20px;
   margin-bottom: 20px;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: ${breakSm}) {
     height: 350px;
     max-height: 400px;
     flex-direction: column;
@@ -25,7 +26,7 @@ const Item = styled.div`
 const ItemName = styled.span`
   color: black;
   margin-right: 20px;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: ${breakSm}) {
     font-size: 24px;
   }
 `;
@@ -33,7 +34,7 @@ const ItemName = styled.span`
 const Value = styled.span`
   color: black;
   font-weight: bold;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: ${breakSm}) {
     color: white;
     background-color: #373737;
     border-radius: 5px;
@@ -50,7 +51,7 @@ const CloseWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: ${breakSm}) {
     display: flex;
     align-items: center;
   }
@@ -61,7 +62,7 @@ const Image = styled.img`
   height: 100px;
   object-fit: cover;
   margin-right: 10px;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: ${breakSm}) {
     width: 200px;
     height: 200px;
   }

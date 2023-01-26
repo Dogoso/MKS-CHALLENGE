@@ -2,6 +2,7 @@ import { useAppSelector } from "Hooks/hooks";
 import { useDispatch } from "react-redux";
 import { resetCart } from "Store/Modules/Cart/reducers";
 import styled from "styled-components";
+import { breakSm } from "Styles/_breakpoints";
 import CloseButton from "../CloseButton/close_button";
 import CartMenuItem from "./Components/CartMenuItem/cart_menu_item";
 
@@ -17,7 +18,7 @@ const Menu = styled.section`
   flex-direction: column;
   justify-content: space-between;
   cursor: default;
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: ${breakSm}) {
     width: 100%;
   }
 `;
