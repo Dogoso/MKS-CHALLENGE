@@ -60,7 +60,7 @@ const Title = styled.h2`
 
 const MainInfo = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   padding: 0px 10px;
 `;
 
