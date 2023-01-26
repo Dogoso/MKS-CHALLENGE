@@ -84,7 +84,7 @@ function StoreItem({ product }: IStoreItem) {
       <Description>
         {product.description}
       </Description>
-      <ShoppingButton onClick={addInCart}>
+      <ShoppingButton role="button" onClick={addInCart}>
         <ShoppingSvg /> Comprar
       </ShoppingButton>
     </Item>

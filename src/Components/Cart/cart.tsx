@@ -25,7 +25,7 @@ function Cart() {
   const cart = useAppSelector(state => state.cart);
 
   return <>
-    <OpenButton onClick={() => setIsCartOpen(true)}>
+    <OpenButton role="button" onClick={() => setIsCartOpen(true)}>
       <CartSvg />
       <NumberItens>
         {cart.length}

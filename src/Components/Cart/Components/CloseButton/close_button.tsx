@@ -18,11 +18,7 @@ function CloseButton({ onClick }: ICloseButton) {
         onClick();
     }
 
-    return (
-        <Button onClick={click}>
-          X
-        </Button>
-    )
+    return <Button data-testid="close_button" onClick={click}>X</Button>
 }
 
 export default CloseButton;

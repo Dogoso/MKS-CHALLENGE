@@ -63,9 +63,9 @@ function QtdInput({ product, amount }: IQtdInput) {
     <Input>
       <InputTitle>Qtd:</InputTitle>
       <Controllers>
-        <QtdButtonLeft onClick={removeProduct}>-</QtdButtonLeft>
+        <QtdButtonLeft data-testid="minus" onClick={removeProduct}>-</QtdButtonLeft>
         <ValueWrapper>{amount}</ValueWrapper>
-        <QtdButtonRight onClick={addProduct}>+</QtdButtonRight>
+        <QtdButtonRight data-testid="plus" onClick={addProduct}>+</QtdButtonRight>
       </Controllers>
     </Input>
   )

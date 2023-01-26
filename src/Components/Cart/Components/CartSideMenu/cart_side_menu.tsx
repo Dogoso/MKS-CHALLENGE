@@ -73,7 +73,7 @@ function CartSideMenu({ closeFunc }: ICartSideMenu) {
   }
 
   return (
-    <Menu>
+    <Menu role="menu">
       <MenuHeader>
         <HeaderTitle>
           Carrinho <br />
@@ -82,10 +82,12 @@ function CartSideMenu({ closeFunc }: ICartSideMenu) {
         <CloseButton onClick={() => closeFunc(false)} />
       </MenuHeader>
       <MenuBody>
-        {products.map(product => <CartMenuItem product={product} />)}
+        {products.map(product => <div key={product.id} role="menuitem">
+          <CartMenuItem product={product} />
+        </div>)}
       </MenuBody>
       <Total>
-        <div>Total:</div> <div>R${totalPrice}</div>
+        <div>Total:</div> <div role="note">R${totalPrice}</div>
       </Total>
       <MenuFooter onClick={confirmBuy}>
         Finalizar Compra
