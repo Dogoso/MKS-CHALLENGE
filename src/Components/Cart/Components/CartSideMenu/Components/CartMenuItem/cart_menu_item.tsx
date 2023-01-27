@@ -51,10 +51,8 @@ const CloseWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  @media only screen and (max-width: ${breakSm}) {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
 `;
 
 const Image = styled.img`
